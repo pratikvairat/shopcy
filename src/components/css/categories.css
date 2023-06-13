@@ -1,0 +1,15 @@
+.catBtn{
+    height:100px;
+    width:100px;
+}
+.shoes{
+    background-image: url("../../data/shoes.jpg");
+    height: 50px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    border-color: black;
+    border-width: 2px;
+    box-sizing: content-box;
+}
