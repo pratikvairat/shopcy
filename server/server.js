@@ -15,4 +15,20 @@ const pool=mysql.createConnection({
     database: 'ShopCy',
 });
 
-app.post('/product/thumbnail',)
+app.get('/product/category',(req,res)=>{
+    const category=req.query;
+    var SQLQuery="SELECT * FROM product WHERE category= ? ";
+    var values=[category];
+    pool.query(SQLQuery,values,(error,result)=>{
+        if(err){
+            res.send(err);
+        }else{
+            console.log('Request Successfull');
+            res.json({result})
+        }
+    })
+})
+
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
