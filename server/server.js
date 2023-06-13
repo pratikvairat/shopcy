@@ -4,7 +4,7 @@ const cors=require('cors');
 const bodyParser=require('body-parser');
 const app=express();
 app.use(cors());
-const port = 3000;
+const port = 9000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -16,14 +16,15 @@ const pool=mysql.createConnection({
 });
 
 app.get('/product/category',(req,res)=>{
-    const category=req.query;
+    const category=req.query.category;
     var SQLQuery="SELECT * FROM product WHERE category= ? ";
     var values=[category];
     pool.query(SQLQuery,values,(error,result)=>{
-        if(err){
-            res.send(err);
+        if(error){
+            res.send(error);
         }else{
-            console.log('Request Successfull');
+            
+            console.log(result);
             res.json({result})
         }
     })
@@ -31,4 +32,4 @@ app.get('/product/category',(req,res)=>{
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
-  });
+});
