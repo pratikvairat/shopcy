@@ -3,6 +3,7 @@ import "./css/navbar.css";
 import { BrowserRouter, Routes, Link, Route } from 'react-router-dom';
 import Account from './account'
 import Home from "./home";
+import ProductDetails from "./productlisting";
 
 const NavBar = () => {
 
@@ -28,7 +29,7 @@ const NavBar = () => {
                                         <Link to='/account' class="nav-link " href="#">Account</Link>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Cart</a>
+                                        <Link to="/detail" class="nav-link" href="#">Cart</Link>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">Favorite</a>
@@ -45,6 +46,7 @@ const NavBar = () => {
                 <Routes>
                     <Route path="/" index element={<Home />}></Route>
                     <Route path="/account" element={<Account />}></Route>
+                    <Route path="/detail" element={<ProductDetails/>}></Route>
                 </Routes>
 
 
