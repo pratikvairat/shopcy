@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FetchByCategory } from "../function";
 
 const LapCards=(props)=>{
-    const { category } = props;
+  const { category } = props;
   const [products, setProducts] = useState([]);
 
   useEffect(() => {

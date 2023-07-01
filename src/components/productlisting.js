@@ -1,38 +1,84 @@
-import React from "react";
-import Img from "../data/boat_headphone.png"
+import React, { useEffect, useState } from "react";
+import { FetchById } from "../function";
 const ProductDetails = () => {
+    const [product, setProduct] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [curentImg,setCurrentImg]=useState("");
+    const [title,setTitle]=useState("");
+    const [description,setDescription]=useState("");
+    const [price,setPrice]=useState("");
+    const [discount,setDiscount]=useState("");
+    const [brand,setBrand]=useState("");
+    const [rating,setRating]=useState("");
+    const [isDataSet,setIsDataSet]=useState(false);
+    useEffect(() => {
+      FetchById(98).then((data) => {
+        if (data && data.result && Array.isArray(data.result)) {
+          setProduct(data.result);
+        } else {
+          setProduct([]);
+        }
+        setIsLoading(false);
+      });
+    },[]);
+    const ImgChange=(e)=>{
+        setCurrentImg(e.target.src);
+    }
+    const setData=(title,description,price,rating,)=>{
+      if(isDataSet===false){
+        setDescription(description);
+        setTitle(title);
+        setPrice(price);
+        setRating(rating);
+        setIsDataSet(true);
+      }
+      
+    }
     return (
-        <>
-            <div class="card text-center border border-primary">
-            <div className="row">
-            <div className="col">
-                <img height="400px" width="400px" src={Img} />
-                </div>
-                    <div className="row">
-                        <div class=" col"><img height="80px" width="80px" src={Img} /></div>
-                        <div class=" col"><img height="80px" width="80px" src={Img} /></div>
-                        <div class="col"><img height="80px" width="80px" src={Img} /></div>
-                        <div class="col"><img height="80px" width="80px" src={Img} /></div>
-                        <div class="col"><img height="80px" width="80px" src={Img} /></div>
+      <div className="card text-center border border-primary">
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <div className="row p-2">
+              <div className="text-center bg-secondary border rounded border-primary">
+                <img height="400px" width="400px" src={curentImg} onChange={(e)=>{setCurrentImg(e.target.src);}} alt="Product" />
+              </div>
+              {product.length > 0 ? (
+                product.map((pimg, index) => (
+                  <div className="col p-2" key={index}>
+                    {setData(pimg.title,pimg.description,pimg.price,pimg.rating)}
+                    <div className="col border bg-dark rounded p-2">
+                      <img height="80px" width="80px" src={pimg.url} onClick={ImgChange} onLoad={ImgChange} alt="Loading..." />
                     </div>
-                </div>
-                <p><b>Boat Headphone</b></p>
-                <p>
-                    Stylish Watch For Man (Luxury) Classy Men's Stainless Steel Wrist Watch - Box Packed
-                </p>
-                <p className="text-primary"><b>Discount of flat 5%</b></p>
-                <h2>Rs. 7000</h2>
-                <h5>Boat</h5>
-                <div class="row">
-                    <div class="col p-5">
-                        <button class="btn mb-2 btn-primary">Order Now</button>
-                    </div>
-                    <div class="col p-5">
-                        <button class="btn mb-2  btn-primary">Add to Card</button>
-                    </div>
-                </div>
+                  </div>
+                ))
+              ) : (
+                <p>No product images found.</p>
+              )}
             </div>
-        </>
+            <p id="title">
+              <b>{title}</b>
+            </p>
+            <p id="description">
+              {description}
+            </p>
+            <p className="text-primary" id="discount">
+              <b>Discount of flat 5%</b>
+            </p>
+            <h2 id="price">Rs. {50*price}</h2>
+            <h5>Brand Name: {brand}</h5>
+            <div className="row">
+              <div className="col p-5">
+                <button className="btn mb-2 btn-primary">Order Now</button>
+              </div>
+              <div className="col p-5">
+                <button className="btn mb-2 btn-primary">Add to Card</button>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
     );
 }
 export default ProductDetails;

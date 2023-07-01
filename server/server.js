@@ -30,7 +30,7 @@ app.get('/product/category', (req, res) => {
 })
 app.get("/product/id", (req, res) => {
     const id = req.query.id;
-    var SQLQuery = "SELECT url FROM Image WHERE product_id= ? ";
+    var SQLQuery = "SELECT DISTINCT image.id, image.product_id, image.url, product.title , product.description, product.price, product.rating FROM image INNER JOIN product ON image.product_id = product.id WHERE product.id = ?; ";
     var values = [id];
     pool.query(SQLQuery, values, (error, result) => {
         if (error) {
@@ -59,30 +59,30 @@ app.post("/registerUser", (req, res) => {
         }
     })
 });
-app.post("/login",(req,res)=>{
+app.post("/login", (req, res) => {
     console.log(req.body);
-    const bodyArray=Object.values(req.body);
-    const [email,passd]=bodyArray;
+    const bodyArray = Object.values(req.body);
+    const [email, passd] = bodyArray;
     console.log(bodyArray);
-    var SQLQuery="SELECT email FROM user WHERE email = ?";
-    var values=[email];
-    pool.query(SQLQuery,values,(error,result)=>{
-        if(error){
+    var SQLQuery = "SELECT email FROM user WHERE email = ?";
+    var values = [email];
+    pool.query(SQLQuery, values, (error, result) => {
+        if (error) {
             res.send("serverfault")
-        }else if(result===null){
+        } else if (result === null) {
             console.log(result);
             res.send("NoUser");
-        }else{
-            var SQL="SELECT email,passd FROM user WHERE email= ? AND passd= ?";
-            var value=[email,passd];
-            pool.query(SQL,value,(e,r)=>{
-                if(e){
+        } else {
+            var SQL = "SELECT email,passd FROM user WHERE email= ? AND passd= ?";
+            var value = [email, passd];
+            pool.query(SQL, value, (e, r) => {
+                if (e) {
                     console.log("error")
                     res.send("serverfault")
-                }else if(r===null){
+                } else if (r === null) {
                     console.log("null");
                     res.send("wrongcredintial");
-                }else{
+                } else {
                     console.log(r);
                     res.send("success");
                 }
