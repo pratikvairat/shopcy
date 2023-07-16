@@ -21,13 +21,13 @@ const Category = () => {
                <button class="fw-bold button">Shoes</button>
             </div>
             <div className=" col text-center catBtn">
-               <button class="fw-bold  button"><a href="/watches">Watches</a></button>
+               <button class="fw-bold  button"><a href="/watches" className="text-decoration-none">Watches</a></button>
             </div>
             <div className=" col text-center catBtn">
-               <button class="fw-bold button">Beauty</button>
+               <button class="fw-bold button"><a href="/beauty" className="text-decoration-none">Beauty</a></button>
             </div>
             <div className=" col text-center catBtn">
-               <button class="fw-bold button">Bags</button>
+               <button class="fw-bold button"><a href="/bags" class="text-decoration-none" >Bags</a></button>
             </div>
          </div>
          
