@@ -1,6 +1,7 @@
 import React from "react";
 import HomeCont from "./homecont";
 import Category from "./categories";
+import ProductList from "./allProduct";
 import { LapCards } from "./cards";
 import NavBar from "./navbar";
 import { Link } from "react-router-dom";
