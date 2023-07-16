@@ -11,7 +11,7 @@ const NavBar = () => {
     return (
         <>
             <BrowserRouter>
-            <div class="bg-dark bgcol">
+                <div class="bg-dark bgcol">
                     <nav class="navbar bg-dark navbar-expand-lg border-bottom border-bottom-dark" data-bs-theme="dark">
                         <div class="container-fluid">
                             <a class="navbar-brand text-white" href="#">Shopping Kart</a>
@@ -45,10 +45,14 @@ const NavBar = () => {
                 <Routes>
                     <Route path="/" index element={<Home />}></Route>
                     <Route path="/account" element={<Account />}></Route>
-                    <Route path="/detail" element={<ProductDetails/>}></Route>
-                    <Route exact path="/laptops" element={<ProductList category="laptops"/>}></Route>
-                    <Route exact path="/smartphone" element={<ProductList category="smartphones"/>}></Route>
-                </Routes> 
+                    <Route path="/detail" element={<ProductDetails />}></Route>
+                    <Route exact path="/shoes" element={<ProductList category="mens-shoes" />}></Route>
+                    <Route exact path="/watches" element={<ProductList category="mens-watches" />}></Route>
+                    <Route exact path="/furniture" element={<ProductList category="furniture" />}></Route>
+                    <Route exact path="/womens-bags" element={<ProductList category="womens-bags" />}></Route>
+                    <Route exact path="/laptops" element={<ProductList category="laptops" />}></Route>
+                    <Route exact path="/smartphone" element={<ProductList category="smartphones" />}></Route>
+                </Routes>
             </BrowserRouter>
         </>
 

@@ -21,7 +21,7 @@ const Category = () => {
                <button class="fw-bold button">Shoes</button>
             </div>
             <div className=" col text-center catBtn">
-               <a href="/mens-watches"><button class="fw-bold  button">Watches</button></a>
+               <button class="fw-bold  button"><a href="/watches">Watches</a></button>
             </div>
             <div className=" col text-center catBtn">
                <button class="fw-bold button">Beauty</button>
@@ -30,14 +30,7 @@ const Category = () => {
                <button class="fw-bold button">Bags</button>
             </div>
          </div>
-         <Routes> 
-            <Route exact path="/shoes" element={<ProductList category="mens-shoes" />}></Route>
-            <Route exact path="/watches" element={<ProductList category="mens-watches" />}></Route>
-            <Route exact path="/furniture" element={<ProductList category=" furniture" />}></Route>
-            <Route exact path="/laptops" element={<ProductList category="laptops" />}></Route>
-            <Route exact path="/laptops" element={<ProductList category="laptops" />}></Route>
-            <Route exact path="/smartphone" element={<ProductList category="smartphones" />}></Route>
-         </Routes>
+         
       </div>
    );
 }
