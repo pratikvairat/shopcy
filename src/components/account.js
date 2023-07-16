@@ -4,7 +4,7 @@ import './css/account.css';
 import {Login,Register} from './register';
 
 function isLogin (){
-    return true;
+    return false;
 }
 function AccountDetails() {
     return (

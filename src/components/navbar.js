@@ -4,13 +4,12 @@ import { BrowserRouter, Routes, Link, Route } from 'react-router-dom';
 import Account from './account'
 import Home from "./home";
 import ProductDetails from "./productlisting";
+import ProductList from "./allProduct";
 
 const NavBar = () => {
 
     return (
-
         <>
-
             <BrowserRouter>
             <div class="bg-dark bgcol">
                     <nav class="navbar bg-dark navbar-expand-lg border-bottom border-bottom-dark" data-bs-theme="dark">
@@ -47,13 +46,9 @@ const NavBar = () => {
                     <Route path="/" index element={<Home />}></Route>
                     <Route path="/account" element={<Account />}></Route>
                     <Route path="/detail" element={<ProductDetails/>}></Route>
-                </Routes>
-
-
-
-
-
-
+                    <Route exact path="/laptops" element={<ProductList category="laptops"/>}></Route>
+                    <Route exact path="/smartphone" element={<ProductList category="smartphones"/>}></Route>
+                </Routes> 
             </BrowserRouter>
         </>
 

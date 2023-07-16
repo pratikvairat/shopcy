@@ -13,7 +13,7 @@ const LapCards=(props)=>{
  const lproducts=products.slice(0,4);
 
   return (
-    <div className="p-4">
+    <div className="p-5">
       <div className="row row-cols-2 row-cols-md-4 g-4">
         {lproducts.map(product => (
           <div className="col" key={product.id}>

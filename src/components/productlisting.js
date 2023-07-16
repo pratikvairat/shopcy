@@ -35,13 +35,13 @@ const ProductDetails = () => {
       
     }
     return (
-      <div className="card text-center border border-primary">
+      <div className="mx-5 card text-center border border-primary">
         {isLoading ? (
           <p>Loading...</p>
         ) : (
           <>
-            <div className="row p-2">
-              <div className="text-center bg-secondary border rounded border-primary">
+            <div className="mx-5 row p-2">
+              <div className="mx-2 text-center bg-secondary border rounded border-primary">
                 <img height="400px" width="400px" src={curentImg} onChange={(e)=>{setCurrentImg(e.target.src);}} alt="Product" />
               </div>
               {product.length > 0 ? (
