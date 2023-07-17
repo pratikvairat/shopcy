@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FetchById } from "../function";
+import { useParams } from "react-router-dom";
 const ProductDetails = () => {
+    const id=useParams();
+    console.log("id:"+id.id);
     const [product, setProduct] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [curentImg,setCurrentImg]=useState("");
@@ -12,7 +15,7 @@ const ProductDetails = () => {
     const [rating,setRating]=useState("");
     const [isDataSet,setIsDataSet]=useState(false);
     useEffect(() => {
-      FetchById(98).then((data) => {
+      FetchById(id.id).then((data) => {
         if (data && data.result && Array.isArray(data.result)) {
           setProduct(data.result);
         } else {
@@ -48,7 +51,7 @@ const ProductDetails = () => {
                 product.map((pimg, index) => (
                   <div className="col p-2" key={index}>
                     {setData(pimg.title,pimg.description,pimg.price,pimg.rating)}
-                    <div className="col border bg-dark rounded p-2">
+                    <div className="m-2 border border-primary rounded p-2">
                       <img height="80px" width="80px" src={pimg.url} onClick={ImgChange} onLoad={ImgChange} alt="Loading..." />
                     </div>
                   </div>

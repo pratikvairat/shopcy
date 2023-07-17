@@ -7,7 +7,6 @@ import ProductDetails from "./productlisting";
 import ProductList from "./allProduct";
 
 const NavBar = () => {
-
     return (
         <>
             <BrowserRouter>
@@ -45,12 +44,13 @@ const NavBar = () => {
                 <Routes>
                     <Route path="/" index element={<Home />}></Route>
                     <Route path="/account" element={<Account />}></Route>
-                    <Route path="/detail" element={<ProductDetails />}></Route>
+                    <Route path="/detail/:id" element={<ProductDetails />}></Route>
                     <Route exact path="/shoes" element={<ProductList category="mens-shoes" />}></Route>
                     <Route exact path="/watches" element={<ProductList category="mens-watches" />}></Route>
                     <Route exact path="/furniture" element={<ProductList category="furniture" />}></Route>
-                    <Route exact path="/womens-bags" element={<ProductList category="womens-bags" />}></Route>
+                    <Route exact path="/bags" element={<ProductList category="womens-bags" />}></Route>
                     <Route exact path="/laptops" element={<ProductList category="laptops" />}></Route>
+                    <Route exact path="/jewellery" element={<ProductList category="womens-jewellery" />}></Route>
                     <Route exact path="/smartphone" element={<ProductList category="smartphones" />}></Route>
                 </Routes>
             </BrowserRouter>

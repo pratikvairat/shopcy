@@ -1,15 +1,13 @@
 import React from "react";
-import ProductList from "./allProduct";
-import { BrowserRouter, Routes, Link, Route,useNavigate } from 'react-router-dom';
 import "./css/categories.css"
 const Category = () => {
-   const navigate=useNavigate();
+   
    return (
       <div>
          <h2 class="text-center">Categories to Shop</h2>
          <div class="row text-center">
             <div className="col text-center catBtn ">
-               <a href="/furniture"><button class="fw-bold button">Furniture</button></a>
+               <button class="fw-bold button"><a href="/furniture" className="text-decoration-none">Furniture</a></button>
             </div>
             <div className=" col text-center catBtn">
                 <button class="fw-bold button"><a href="/laptops" className="text-decoration-none">Laptop</a></button>
@@ -18,13 +16,13 @@ const Category = () => {
               <button class="fw-bold button"><a href="/smartphone" className="text-decoration-none">Smartphone</a></button>
             </div>
             <div className=" col text-center catBtn">
-               <button class="fw-bold button">Shoes</button>
+               <button class="fw-bold button"><a href="/shoes" className="text-decoration-none">Shoes</a></button>
             </div>
             <div className=" col text-center catBtn">
                <button class="fw-bold  button"><a href="/watches" className="text-decoration-none">Watches</a></button>
             </div>
             <div className=" col text-center catBtn">
-               <button class="fw-bold button"><a href="/beauty" className="text-decoration-none">Beauty</a></button>
+               <button class="fw-bold button"><a href="/jewellery" className="text-decoration-none">Jewellery</a></button>
             </div>
             <div className=" col text-center catBtn">
                <button class="fw-bold button"><a href="/bags" class="text-decoration-none" >Bags</a></button>
