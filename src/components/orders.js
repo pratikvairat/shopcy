@@ -1,5 +1,25 @@
 import React, { useEffect, useState } from "react";
-
+export function PlaceOrder(props){
+    const {id}=props;
+    const email=localStorage.getItem('email');
+    var url=`http://127.0.0.1:9000/place-order?email=${email}&id=${id}`;
+    fetch(url,{
+        method:"POST",
+        headers:{'Content-type': 'application/json; charset=UTF-8',},
+        body:JSON.stringify({
+            'email':email,
+            'id':id,
+        }),
+    }).then(response=>{
+        return response.text()
+    }).then(data=>{
+        if(data==='success'){
+            alert("Order Placed Successfully. Check Your orders on orders page in account.");
+        }else{
+            alert("Something went wrong");
+        }
+    })
+}
 export function OrderDetails() {
   const email = localStorage.getItem("email");
   const url = "http://localhost:9000/orderDetails?email=" + email;

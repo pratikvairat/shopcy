@@ -31,8 +31,8 @@ app.get('/accountDetails',(req,res)=>{
 
 })
 
-app.post('/place-order',(req,res)=>{
-    const {email,id}=req.body;
+app.get('/place-order',(req,res)=>{
+    const {email,id}=req.query;
     var SQLQuery="INSERT INTO orders (email, productId) VALUES (?,?)";
     var values=[email,id];
     pool.query(SQLQuery,values,(error,result)=>{
