@@ -25,7 +25,7 @@ app.get('/accountDetails',(req,res)=>{
             console.log(error);
         }else{
             console.log(result);
-            res.json({result});
+            res.json(result);
         }
     })
 
