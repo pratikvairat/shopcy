@@ -4,6 +4,10 @@ import './css/account.css';
 import {Login,Register} from './register';
 
 function isLogin (){
+    const email=localStorage.getItem('email');
+    if(email===null){
+        return true;
+    }
     return false;
 }
 function AccountDetails() {
@@ -96,7 +100,6 @@ function AccountDetails() {
                                         <p>{email}</p>
                                     </div>
                                 </div>
-                               
                             </div>
                         </div>
                     </div>
