@@ -32,10 +32,10 @@ app.get('/accountDetails',(req,res)=>{
 })
 
 app.post('/place-order',(req,res)=>{
-    const [email,id]=req.query;
+    const {email,id}=req.body;
     var SQLQuery="INSERT INTO orders (email, productId) VALUES (?,?)";
     var values=[email,id];
-    pool.query(SQLQuery,(error,result)=>{
+    pool.query(SQLQuery,values,(error,result)=>{
         if(error){
             res.send("error occured");
             console.log(error);
@@ -44,7 +44,19 @@ app.post('/place-order',(req,res)=>{
         }
     })
 })
-
+app.get('/orderDetails',(req,res)=>{
+    const email=req.query.email;
+    var SQLQuery="SELECT orderid,productid,addressLine1,addressLine2,pincode,city,state,title,thumbnail,price FROM orders INNER JOIN user ON orders.email = user.email INNER JOIN product ON orders.productid=product.id WHERE user.email= ?;"
+    var values=[email];
+    pool.query(SQLQuery,values,(error,result)=>{
+        if(error){
+            res.send('error');
+            console.log(error);
+        }else{
+            res.json(result);
+        }
+    })
+})
 app.get('/product/category', (req, res) => {
     const category = req.query.category;
     var SQLQuery = "SELECT * FROM product WHERE category= ? ";
