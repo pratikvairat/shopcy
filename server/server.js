@@ -31,6 +31,20 @@ app.get('/accountDetails',(req,res)=>{
 
 })
 
+app.post('/place-order',(req,res)=>{
+    const [email,id]=req.query;
+    var SQLQuery="INSERT INTO orders (email, productId) VALUES (?,?)";
+    var values=[email,id];
+    pool.query(SQLQuery,(error,result)=>{
+        if(error){
+            res.send("error occured");
+            console.log(error);
+        }else{
+            res.send('success');
+        }
+    })
+})
+
 app.get('/product/category', (req, res) => {
     const category = req.query.category;
     var SQLQuery = "SELECT * FROM product WHERE category= ? ";
