@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AccImg from '../data/acpng.png'
 import './css/account.css';
 import {Login,Register} from './register';
+import { OrderDetails } from './orders';
 
 function isLogin (){
     const email=localStorage.getItem('email');
@@ -112,7 +113,7 @@ function Account() {
     if(isLogin()){
         return (Login());
     }else{
-        return(AccountDetails());
+        return(OrderDetails());
     }
 }
 export default Account;

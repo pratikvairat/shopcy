@@ -54,6 +54,7 @@ app.get('/orderDetails',(req,res)=>{
             console.log(error);
         }else{
             res.json(result);
+            console.log(result);
         }
     })
 })
