@@ -15,6 +15,22 @@ const pool = mysql.createConnection({
     password: 'Pratik@123',
     database: 'ShopCy',
 });
+app.get('/accountDetails',(req,res)=>{
+    const email=req.query.email;
+    var SQLQuery="SELECT * FROM user WHERE email= ? ";
+    var values=[email];
+    pool.query(SQLQuery,values,(error,result)=>{
+        if(error){
+            res.send("error occured");
+            console.log(error);
+        }else{
+            console.log(result);
+            res.json({result});
+        }
+    })
+
+})
+
 app.get('/product/category', (req, res) => {
     const category = req.query.category;
     var SQLQuery = "SELECT * FROM product WHERE category= ? ";

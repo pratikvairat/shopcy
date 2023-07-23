@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './css/account.css';
 import {Login,Register} from './register';
@@ -7,6 +7,15 @@ function isLogin (){
     return false;
 }
 function AccountDetails() {
+    const email=localStorage.getItem('email');
+    var url='http://localhost:9000/accountDetails?email='+email;
+    console.log(url);
+    const [name,setName]=useState('');
+    const [surname,setSurname]=useState('');
+    const [city,setCity]=useState('');
+    const [state,setState]=useState('');
+    const [addressLine1,setAddressLine1]=useState('');
+    
     return (
         <div class="container emp-profile">
             
